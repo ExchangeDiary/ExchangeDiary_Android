@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="bottom_tab_top_radius">12dp</dimen>
+    <dimen name="bottom_tab_height">76dp</dimen>
+    <dimen name="bottom_tab_icon_size">44dp</dimen>
+</resources>

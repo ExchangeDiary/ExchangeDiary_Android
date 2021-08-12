@@ -17,10 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Voda">
         <activity android:name=".ui.signin.SignInActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
@@ -33,7 +29,14 @@
                     android:scheme="kakao59b3edad99f26e7b2a5cf6e890b5760c" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity"/>
+ 
+        <activity android:name=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
