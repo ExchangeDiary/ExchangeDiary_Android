@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <color name="voda_blue_background">#4081ff</color>
+    <color name="voda_yellow_background">#ffc531</color>
+    <color name="voda_text">#ffffff</color>
 </resources>
