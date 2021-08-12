@@ -97,9 +97,7 @@ class SignInActivity : AppCompatActivity() {
 
         Timber.tag(TAG).e("email >> ${user.email}")
         Timber.tag(TAG).e("displayName >> ${user.displayName}")
-        Timber.tag(TAG).e("metadata >> ${user.metadata}")
         Timber.tag(TAG).e("photoUrl >> ${user.photoUrl}")
-        Timber.tag(TAG).e("phoneNumber >> ${user.phoneNumber}")
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -123,10 +121,27 @@ class SignInActivity : AppCompatActivity() {
                     //토큰 유효성 체크 성공(필요 시 토큰 갱신됨) - 사용자 정보 얻음
                     Timber.tag(TAG).e("id >> ${accessToken?.id}")
                     Timber.tag(TAG).e("만료 남은 시간(초) >> ${accessToken?.expiresIn}")
+                    getKakaoUser()
                 }
             }
         } else {
             requestKakaoLogin()
+        }
+    }
+
+    fun getKakaoUser(){
+        // 사용자 정보 요청 (기본)
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Timber.tag(TAG).e(error,"사용자 정보 요청 실패")
+            }
+            else if (user != null) {
+                Timber.tag(TAG).e("사용자 정보 요청 성공" +
+                        "\n회원번호: ${user.id}" +
+                        "\n이메일: ${user.kakaoAccount?.email}" +
+                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+            }
         }
     }
 
@@ -147,10 +162,12 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private val kakaoLoginCallback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
-        if (error != null)
+        if (error != null) {
             Timber.tag(TAG).e(error, "로그인 실패")
-        else if (token != null)
+        } else if (token != null) {
             Timber.tag(TAG).i("로그인 성공 ${token.accessToken}")
+            getKakaoUser()
+        }
     }
 
     private val kakaoLogoutCallback: (Throwable?) -> Unit = { error ->
