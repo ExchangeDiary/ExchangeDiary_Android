@@ -12,7 +12,7 @@ class DiaryRemoteDataSource(
 ): DiaryRemote {
 
     override suspend fun getDiary(): Result<List<Diary>> {
-        diaryApiService.getDiary()
+//        diaryApiService.getDiary()
         return Result.Success(emptyList())
     }
 }

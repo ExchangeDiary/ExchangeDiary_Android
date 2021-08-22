@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Voda</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home_page_empty_text_sir">님</string>
+    <string name="home_page_empty_text">만들어볼까요?</string>
 
 </resources>

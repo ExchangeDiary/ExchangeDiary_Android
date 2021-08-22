@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Voda" parent="@android:style/Widget.Material"/>
+
+    <style name="Widget.Voda.Text" parent="Widget.MaterialComponents.TextView">
+
+    </style>
+
+    <style name="Widget.Voda.NotoRegularText" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/notosans_regular</item>
+    </style>
+
+    <style name="Widget.Voda.NotoTextBold" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/notosans_bold</item>
+    </style>
+
+    <style name="Widget.Voda.VolteRegularText" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/Volte</item>
+    </style>
+
+    <style name="Widget.Voda.VolteTextBold" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/volte_bold</item>
+    </style>
+
+    <style name="Widget.Voda.HomeRecyclerView" >
+        <item name="android:splitMotionEvents">false</item>
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    
+    <style name="Widget.Voda.HomePrimaryText" parent="Widget.Voda.NotoTextBold">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Voda.HomeNormalText" parent="Widget.Voda.NotoRegularText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+
+
+</resources>

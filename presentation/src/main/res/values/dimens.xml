@@ -4,4 +4,9 @@
     <dimen name="bottom_tab_top_radius">12dp</dimen>
     <dimen name="bottom_tab_height">76dp</dimen>
     <dimen name="bottom_tab_icon_size">44dp</dimen>
+
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="home_left_padding">24dp</dimen>
 </resources>

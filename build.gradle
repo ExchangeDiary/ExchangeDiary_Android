@@ -8,6 +8,8 @@ buildscript {
         koinVersion = '2.0.1'
         lifecycleVersion = '2.2.0-rc02'
         timberVersion = "4.7.1"
+        lottieVersion = "3.0.0"
+
     }
 
     repositories {
