@@ -7,6 +7,12 @@
 
     <dimen name="toolbar_height">56dp</dimen>
 
+    <dimen name="card_radius">8dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="home_left_padding">24dp</dimen>
+    <dimen name="home_card_right_margin">24dp</dimen>
+
+    <dimen name="home_vertical_card_interval">24dp</dimen>
+
 </resources>

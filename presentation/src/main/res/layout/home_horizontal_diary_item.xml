@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="eventListener"
+            type="com.voda.presentation.ui.main.home.listener.HomeListener" />
+
+        <variable
+            name="item"
+            type="com.voda.presentation.ui.main.home.model.DiaryByDDayItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:onClick="@{() -> eventListener.onDiaryClicked(item)}"
+        app:cardCornerRadius="@dimen/card_radius"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="@dimen/home_vertical_card_interval"
+        android:layout_width="122dp"
+        android:layout_height="170dp">
+
+        <ImageView
+            android:background="@drawable/home_default_cat_card"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                app:layout_constraintGuide_percent="0.7"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                style="@style/Widget.Voda.HomeHorizontalItemTitle"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/title"
+                android:text="@{item.title}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="주린이는\n오늘도 뚠뚠"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
+
         <variable
             name="viewmodel"
             type="com.voda.presentation.ui.main.home.HomeViewModel" />
@@ -53,15 +55,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_recyclerview"
             app:layout_constraintTop_toBottomOf="@+id/home_toolbar"
-            style="@style/Widget.Voda.HomeRecyclerView"
+            style="@style/Widget.Voda.HomeVerticalRecyclerView"
             android:layout_width="match_parent"
+            homeItem="@{viewmodel.items}"
             android:layout_height="0dp"/>
-
-
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/image"
+            android:visibility="@{viewmodel.isProgressing ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

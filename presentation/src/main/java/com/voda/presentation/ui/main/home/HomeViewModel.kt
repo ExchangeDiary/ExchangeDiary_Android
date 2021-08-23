@@ -18,9 +18,13 @@ class HomeViewModel(
     private val _items = MutableLiveData<List<HomeItem>>()
     val items: LiveData<List<HomeItem>> = _items
 
+    private val _isProgressing = MutableLiveData<Boolean>().apply { value = false }
+    val isProgressing: LiveData<Boolean> = _isProgressing
+
     fun load() {
         viewModelScope.launch {
             try {
+                _isProgressing.value = true
                 getHomeUseCase().getValue().run {
                     _items.value = this.toHomeItems()
                 }
@@ -28,6 +32,8 @@ class HomeViewModel(
             } catch (e: Exception) {
                 e.printStackTrace()
 
+            } finally {
+                _isProgressing.value = false
             }
         }
     }

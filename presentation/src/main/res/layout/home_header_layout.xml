@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="item"
+            type="com.voda.presentation.ui.main.home.model.Header" />
 
     </data>
 
@@ -23,6 +25,7 @@
             style="@style/Widget.Voda.HomePrimaryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{item.userName}"
             tools:text="고영희" />
 
         <TextView
@@ -47,10 +50,10 @@
             tools:text="@string/home_page_empty_text" />
 
         <ImageView
+            bgResource="@{item.image}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/home_cat"
-            android:layout_width="95dp"
+            android:layout_width="105dp"
             android:layout_height="120dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

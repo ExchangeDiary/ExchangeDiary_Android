@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="eventListener"
+            type="com.voda.presentation.ui.main.home.listener.HomeListener" />
+
+        <variable
+            name="item"
+            type="com.voda.presentation.ui.main.home.model.JoinedDiaryItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="@{() -> eventListener.onDiaryClicked(item)}"
+        android:layout_width="match_parent"
+        android:layout_height="116dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_card_view"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardCornerRadius="@dimen/card_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:background="@drawable/default_cat_card"
+                android:id="@+id/image"
+                android:layout_width="60dp"
+                android:layout_height="90dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hashtag_container"
+            app:layout_constraintTop_toTopOf="@+id/image_card_view"
+            android:layout_marginStart="@dimen/home_card_right_margin"
+            app:layout_constraintStart_toEndOf="@+id/image_card_view"
+            android:background="@drawable/bg_hash_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/hashtag"
+                android:text="@{item.hashTag}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/Widget.Voda.HomeTagText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="#떡상가즈아!" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Widget.Voda.HomeVerticalRvTitle"
+            app:layout_constraintStart_toStartOf="@+id/hashtag_container"
+            app:layout_constraintTop_toBottomOf="@+id/hashtag_container"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            tools:text="주린이는 오늘도 뚠뚠"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_images_recycler_view"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="@+id/hashtag_container"
+            userItem="@{item.userImages}"
+            style="@style/Widget.Voda.HomeHorizontalRecyclerView"
+            android:layout_width="100dp"
+            android:layout_height="24dp"/>
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/user_images_recycler_view"
+            android:layout_marginStart="@dimen/margin_small"
+            app:layout_constraintStart_toEndOf="@+id/user_images_recycler_view"
+            android:id="@+id/other_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{'+' + Integer.valueOf(item.otherCount).toString()}"
+            tools:text="+3" />
+
+        <ImageView
+            android:background="@drawable/ic_home_item_right_arrrow"
+            android:layout_marginEnd="@dimen/margin_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="32dp"
+            android:layout_height="32dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/gray_basic"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

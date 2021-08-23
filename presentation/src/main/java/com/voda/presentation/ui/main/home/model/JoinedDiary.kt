@@ -1,5 +1,5 @@
 package com.voda.presentation.ui.main.home.model
 
 data class JoinedDiary(
-    val item: List<JoinedDiaryItem>
+    val items: List<JoinedDiaryItem>
 ): HomeInfo

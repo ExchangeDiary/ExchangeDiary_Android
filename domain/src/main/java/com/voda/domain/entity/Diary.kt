@@ -8,7 +8,7 @@ data class Diary(
      val id: String,
      val title: String,
      val owner: Int,
-     val bgColor: String,
+     val bgColor: String?,
      val bgUrl: String,
      val members: List<User>,
      val interval: Date,
