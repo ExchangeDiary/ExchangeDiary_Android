@@ -1,13 +1,23 @@
 package com.voda.presentation.ui.main.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.voda.presentation.R
+import androidx.recyclerview.widget.RecyclerView
+import com.voda.presentation.databinding.FragmentHomeBinding
+import com.voda.presentation.ui.BaseFragment
+import com.voda.presentation.ui.main.home.adapter.HomeAdapter
+import com.voda.presentation.ui.main.home.listener.HomeListener
+import com.voda.presentation.ui.main.home.model.DiaryByDDayItem
+import com.voda.presentation.ui.main.home.model.JoinedDiaryItem
+import org.koin.android.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment(), HomeListener {
+
+    private lateinit var viewDataBinding: FragmentHomeBinding
+
+    private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +29,51 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        viewDataBinding = FragmentHomeBinding.inflate(inflater, container, false).apply {
+            viewmodel = viewModel
+        }
+
+        return viewDataBinding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupLifecycleOwner()
+        setupAdapter()
+        viewModel.load()
+    }
+
+    private fun setupAdapter() {
+        viewDataBinding.homeRecyclerview.apply {
+            adapter = HomeAdapter(viewModel, this@HomeFragment)
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    setToolbarBarElevation(scrollY)
+                }
+            })
+        }
+    }
+
+    private fun setToolbarBarElevation(scrollY: Int) {
+        if(scrollY == 0 && viewModel.isScrollTop.value != true) {
+            viewModel.setScrollTop(true)
+        } else if (scrollY != 0 && viewModel.isScrollTop.value != false) {
+            viewModel.setScrollTop(false)
+        }
+
+    }
+
+    private fun setupLifecycleOwner() {
+        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+    }
+
+    override fun onDiaryClicked(item: DiaryByDDayItem) {
+
+    }
+
+    override fun onDiaryClicked(item: JoinedDiaryItem) {
     }
 
     companion object {

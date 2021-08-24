@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--bottom-->
     <dimen name="bottom_tab_top_radius">12dp</dimen>
-    <dimen name="bottom_tab_height">76dp</dimen>
-    <dimen name="bottom_tab_icon_size">44dp</dimen>
+    <dimen name="bottom_tab_height">56dp</dimen>
+    <dimen name="bottom_tab_icon_size">40dp</dimen>
+
+    <!--home-->
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <dimen name="card_radius">8dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="home_left_padding">24dp</dimen>
+    <dimen name="home_card_right_margin">24dp</dimen>
+
+    <dimen name="home_vertical_card_interval">24dp</dimen>
+
+    <dimen name="zero">0dp</dimen>
+    <dimen name="elevation">8dp</dimen>
+
 </resources>
