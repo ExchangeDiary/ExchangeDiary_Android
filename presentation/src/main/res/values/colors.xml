@@ -13,5 +13,7 @@
     <color name="gray_text_box">#f5f5f5</color>
     <color name="gray_basic">#eeeeee</color>
 
+    <color name="home_bg">@color/gray_text_box</color>
+
 
 </resources>

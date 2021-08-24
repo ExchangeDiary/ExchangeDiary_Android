@@ -77,7 +77,7 @@
             app:layout_constraintStart_toStartOf="@+id/hashtag_container"
             userItem="@{item.userImages}"
             style="@style/Widget.Voda.HomeHorizontalRecyclerView"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="24dp"/>
 
         <TextView

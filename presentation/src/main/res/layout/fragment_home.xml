@@ -14,13 +14,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/home_bg"
         tools:context=".ui.main.home.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/home_toolbar"
+            android:background="@color/home_bg"
+            android:elevation="@{viewmodel.isScrollTop ? @dimen/zero : @dimen/elevation}"
+            app:layout_constraintTop_toTopOf="parent"
             android:paddingStart="26dp"
             android:paddingEnd="@dimen/margin_normal"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height">
 

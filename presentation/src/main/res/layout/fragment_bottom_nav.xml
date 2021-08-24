@@ -19,9 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_tab"
+            app:layout_constraintVertical_chainStyle="spread_inside"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            app:layout_constraintTop_toBottomOf="@+id/view_pager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"/>
 
         <com.voda.presentation.ui.main.nav.widget.BottomTabLayout
             android:id="@+id/bottom_tab"

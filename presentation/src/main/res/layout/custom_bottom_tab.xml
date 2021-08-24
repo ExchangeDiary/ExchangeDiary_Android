@@ -10,11 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:background="@drawable/homebox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
         <com.voda.presentation.ui.main.nav.widget.TabButton
             android:id="@+id/notification_button"
             app:unselectedImage="@drawable/ic_bottom_tab_noti_unselected"

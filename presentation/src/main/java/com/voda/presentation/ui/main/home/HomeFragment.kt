@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.voda.presentation.R
-import com.voda.presentation.databinding.FragmentBottomNavBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.voda.presentation.databinding.FragmentHomeBinding
 import com.voda.presentation.ui.BaseFragment
 import com.voda.presentation.ui.main.home.adapter.HomeAdapter
@@ -47,7 +46,23 @@ class HomeFragment : BaseFragment(), HomeListener {
     private fun setupAdapter() {
         viewDataBinding.homeRecyclerview.apply {
             adapter = HomeAdapter(viewModel, this@HomeFragment)
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    setToolbarBarElevation(scrollY)
+                }
+            })
         }
+    }
+
+    private fun setToolbarBarElevation(scrollY: Int) {
+        if(scrollY == 0 && viewModel.isScrollTop.value != true) {
+            viewModel.setScrollTop(true)
+        } else if (scrollY != 0 && viewModel.isScrollTop.value != false) {
+            viewModel.setScrollTop(false)
+        }
+
     }
 
     private fun setupLifecycleOwner() {

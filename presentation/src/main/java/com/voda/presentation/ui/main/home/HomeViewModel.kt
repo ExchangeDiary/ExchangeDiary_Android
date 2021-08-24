@@ -21,6 +21,13 @@ class HomeViewModel(
     private val _isProgressing = MutableLiveData<Boolean>().apply { value = false }
     val isProgressing: LiveData<Boolean> = _isProgressing
 
+    private val _isScrollTop = MutableLiveData<Boolean>().apply { value = true }
+    val isScrollTop: LiveData<Boolean> = _isScrollTop
+
+    fun setScrollTop(isTop: Boolean) {
+        _isScrollTop.value = isTop
+    }
+
     fun load() {
         viewModelScope.launch {
             try {
