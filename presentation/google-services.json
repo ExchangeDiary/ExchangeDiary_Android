@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "704390412528",
+    "firebase_url": "https://exchangediary-8f079-default-rtdb.firebaseio.com",
+    "project_id": "exchangediary-8f079",
+    "storage_bucket": "exchangediary-8f079.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704390412528:android:afd7b85c8484b5176b6a35",
+        "android_client_info": {
+          "package_name": "com.voda.presentation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704390412528-00e6ip9v61fdrlhpst7l56c3drf09q1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2kM1EO79D1DeCn1lwN_wZazdYebR-vr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704390412528-00e6ip9v61fdrlhpst7l56c3drf09q1u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
