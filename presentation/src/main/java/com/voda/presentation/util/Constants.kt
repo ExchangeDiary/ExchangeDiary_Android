@@ -6,3 +6,4 @@ enum class BottomTab(val pos: Int) {
     Home(1),
     MyPage(2);
 }
+

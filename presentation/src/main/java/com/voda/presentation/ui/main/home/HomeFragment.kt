@@ -11,6 +11,8 @@ import com.voda.presentation.ui.main.home.adapter.HomeAdapter
 import com.voda.presentation.ui.main.home.listener.HomeListener
 import com.voda.presentation.ui.main.home.model.DiaryByDDayItem
 import com.voda.presentation.ui.main.home.model.JoinedDiaryItem
+import com.voda.presentation.ui.record.model.VoiceRecordArg
+import com.voda.presentation.util.Navigation
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment(), HomeListener {
@@ -70,10 +72,15 @@ class HomeFragment : BaseFragment(), HomeListener {
     }
 
     override fun onDiaryClicked(item: DiaryByDDayItem) {
-
+        openVoiceRecordingPage()
     }
 
     override fun onDiaryClicked(item: JoinedDiaryItem) {
+    }
+
+    //test
+    private fun openVoiceRecordingPage() {
+        activity?.run { Navigation.openVoiceRecordingPage(this, VoiceRecordArg(null)) }
     }
 
     companion object {

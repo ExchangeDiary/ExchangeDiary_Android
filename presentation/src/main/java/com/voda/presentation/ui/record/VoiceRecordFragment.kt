@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.voda.presentation.R
 import com.voda.presentation.databinding.FragmentVoiceRecordBinding
 import com.voda.presentation.ui.record.model.VoiceRecordArg
 import org.koin.android.viewmodel.ext.android.viewModel

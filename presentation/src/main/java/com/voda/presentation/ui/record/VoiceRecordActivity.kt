@@ -15,7 +15,7 @@ class VoiceRecordActivity : AppCompatActivity() {
 
         val arg = getArg(intent)
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && arg != null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, VoiceRecordFragment.newInstance(arg))
                 .commitNow()

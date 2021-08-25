@@ -17,6 +17,7 @@
     <color name="gray_basic">#eeeeee</color>
 
     <color name="home_bg">@color/gray_text_box</color>
+    <color name="voice_recording_description">#b4b4b4</color>
 
 
 </resources>
