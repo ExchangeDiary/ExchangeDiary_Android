@@ -7,14 +7,14 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('/Users/slee/AndroidKeyStore/vodaKey.jks')
-            storePassword 'ryghksdlfrl'
-            keyAlias 'vodaKey'
-            keyPassword 'ryghksdlfrl'
-        }
-    }
+//    signingConfigs {
+//        debug {
+//            storeFile file('/Users/slee/AndroidKeyStore/vodaKey.jks')
+//            storePassword 'ryghksdlfrl'
+//            keyAlias 'vodaKey'
+//            keyPassword 'ryghksdlfrl'
+//        }
+//    }
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 

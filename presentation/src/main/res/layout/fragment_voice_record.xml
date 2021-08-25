@@ -52,6 +52,7 @@
             android:id="@+id/file_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Untitle_210807"
             tools:text="Untitle_210807"/>
 
         <TextView
@@ -63,6 +64,7 @@
             android:id="@+id/file_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="00:00"
             tools:text="00:00"/>
 
         <FrameLayout
