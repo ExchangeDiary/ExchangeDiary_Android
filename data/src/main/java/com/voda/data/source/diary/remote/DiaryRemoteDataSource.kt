@@ -7,12 +7,12 @@ import kotlinx.coroutines.Dispatchers
 import com.voda.domain.util.Result
 
 class DiaryRemoteDataSource(
-    private val diaryApiService: DiaryApiService,
+//    private val diaryApiService: DiaryApiService,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ): DiaryRemote {
 
     override suspend fun getDiary(): Result<List<Diary>> {
-        diaryApiService.getDiary()
+//        diaryApiService.getDiary()
         return Result.Success(emptyList())
     }
 }
