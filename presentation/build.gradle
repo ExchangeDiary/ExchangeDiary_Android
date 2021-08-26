@@ -66,6 +66,8 @@ dependencies {
     // Also declare the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
 
     // Koin

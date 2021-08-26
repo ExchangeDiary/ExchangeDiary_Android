@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.voda.presentation.ui.story.model.StoryModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="144dp"
+            android:layout_height="212dp"
+            android:background="@color/background_blue"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" >
+
+            <TextView
+                android:id="@+id/storyDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{model.date}"
+                android:textColor="#4081ff"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="7/18" />
+
+            <TextView
+                android:id="@+id/storyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.title}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/storyDate"
+                app:layout_constraintTop_toBottomOf="@id/storyDate"
+                tools:text="고양이좋아" />
+
+            <TextView
+                android:id="@+id/storyPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.place}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/storyDate"
+                app:layout_constraintTop_toBottomOf="@id/storyTitle"
+                tools:text="방구석에서" />
+
+            <TextView
+                android:id="@+id/storyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingHorizontal="16dp"
+                android:text="@{model.text}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/storyPlace"
+                tools:text="아니 글쎄 오늘 무슨 일이 있었느냐면 마리양...." />
+
+            <ImageView
+                android:id="@+id/storyProfileImage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="34dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/storyText" />
+
+            <TextView
+                android:id="@+id/storyProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="@{model.name}"
+                android:textColor="#a4a4a4"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/storyProfileImage"
+                app:layout_constraintStart_toEndOf="@id/storyProfileImage"
+                app:layout_constraintTop_toTopOf="@id/storyProfileImage"
+                tools:text="박세리" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

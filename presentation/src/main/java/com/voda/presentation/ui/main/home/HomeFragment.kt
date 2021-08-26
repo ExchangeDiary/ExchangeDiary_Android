@@ -1,13 +1,18 @@
 package com.voda.presentation.ui.main.home
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.voda.presentation.R
+import androidx.fragment.app.Fragment
+import com.voda.domain.entity.Story
+import com.voda.presentation.databinding.FragmentHomeBinding
+import com.voda.presentation.ui.story.StoryActivity
 
 class HomeFragment : Fragment() {
+
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,11 +21,23 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.toStoryListButton.setOnClickListener {
+            activity?.let{
+                val intent = Intent(context, StoryActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     companion object {

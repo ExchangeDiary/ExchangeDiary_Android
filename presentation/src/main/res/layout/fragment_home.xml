@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.home.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.main.home.HomeFragment">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <!-- TODO: delete - entry point to StoryList -->
+        <Button
+            android:id="@+id/toStoryListButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다이어리 상세" />
+
+    </FrameLayout>
+</layout>
