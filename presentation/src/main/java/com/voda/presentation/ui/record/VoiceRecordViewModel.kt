@@ -27,13 +27,16 @@ class VoiceRecordViewModel: ViewModel() {
     private val _effect = MutableLiveData<EffectMode>().apply { value = EffectMode.No_effect }
     val effect: LiveData<EffectMode> = _effect
 
-    private val _currentPosition = MutableLiveData<String>()
-    val currentPosition: LiveData<String> = _currentPosition
+    private val _currentDuration = MutableLiveData<String>()
+    val currentDuration: LiveData<String> = _currentDuration
 
     private val _remainingTime = MutableLiveData<String>()
     val remainingTime: LiveData<String> = _remainingTime
 
     lateinit var recorder: MediaRecorder
+
+    var player: MediaPlayer? = null
+
 
     val filePath: String = makeFileName()
 
@@ -43,6 +46,11 @@ class VoiceRecordViewModel: ViewModel() {
 
     fun setPlayerState(playerState: PlayerState){
         _isPlayerState.value = playerState
+    }
+
+    fun setEffectMode(effectMode: EffectMode){
+        _effect.value = effectMode
+        setUpAudio()
     }
 
     init {
@@ -77,16 +85,16 @@ class VoiceRecordViewModel: ViewModel() {
     }
 
     fun stopRecording() {
-        setPlayerState(PlayerState.Play)
         recorder.stop()
         recorder.release()
 
 //        setupRecord()
+        setUpAudio()
+        setPlayerState(PlayerState.Play)
     }
 
-    fun playAudio() {
-        setPlayerState(PlayerState.Playing)
-        MediaPlayer().apply {
+    fun setUpAudio() {
+        player = MediaPlayer().apply {
             Timber.i("$filePath")
             setDataSource(filePath)
             playbackParams = this.playbackParams.apply {
@@ -95,15 +103,31 @@ class VoiceRecordViewModel: ViewModel() {
             }
             this.playbackParams.pitch
             prepare()
-            start()
+            setOnCompletionListener {
+                setPlayerState(PlayerState.Play)
+            }
         }
+    }
+
+    fun playAudio() {
+        setPlayerState(PlayerState.Playing)
+        player?.start()
+//        player = MediaPlayer().apply {
+//            Timber.i("$filePath")
+//            setDataSource(filePath)
+//            playbackParams = this.playbackParams.apply {
+//                speed = 1f
+//                pitch = getPitchValue()
+//            }
+//            this.playbackParams.pitch
+//            prepare()
+//            start()
+//        }
     }
 
     fun stopPlayer() {
         setPlayerState(PlayerState.Play)
-        MediaPlayer().apply {
-            stop()
-        }
+        player?.stop()
     }
 
     private fun getPitchValue(): Float {
