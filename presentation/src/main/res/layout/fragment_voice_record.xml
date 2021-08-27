@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.voda.presentation.ui.record.model.PlayerState"/>
+
+        <import type="com.voda.presentation.ui.record.model.EffectMode"/>
+
+        <import type="android.view.View"/>
+
         <variable
             name="viewmodel"
             type="com.voda.presentation.ui.record.VoiceRecordViewModel" />
@@ -16,7 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -67,36 +73,165 @@
             android:text="00:00"
             tools:text="00:00"/>
 
+
+
         <FrameLayout
+            android:id="@+id/recording_button"
             android:background="@drawable/bg_circle"
             android:layout_marginTop="@dimen/margin_normal"
             app:layout_constraintTop_toBottomOf="@+id/file_length"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/recording_button"
             android:layout_width="100dp"
             android:layout_height="100dp">
 
             <ImageView
+                android:visibility="@{viewmodel.isPlayerState() == PlayerState.Recording ? View.GONE : View.VISIBLE}"
                 android:layout_gravity="center"
                 android:background="@drawable/ic_voice"
                 android:layout_width="90dp"
                 android:layout_height="90dp"/>
+
+            <ImageView
+                android:visibility="@{viewmodel.isPlayerState() == PlayerState.Recording ? View.VISIBLE : View.GONE}"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_square_radius_4dp"
+                android:layout_width="31dp"
+                android:layout_height="31dp"/>
         </FrameLayout>
 
+
         <TextView
-            style="@style/Widget.Voda.VoiceRecordingDescription"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/recording_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/description"
+            style="@style/Widget.Voda.VoiceRecordingDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="@string/audio_recording_page_record_description"
-            tools:text="@string/audio_recording_page_record_description"/>
+            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Record ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recording_button"
+            tools:text="@string/audio_recording_page_record_description" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/player_container"
+            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Play || viewmodel.isPlayerState() == PlayerState.Playing ? View.VISIBLE : View.GONE}"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recording_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:paddingStart="10dp"
+                android:paddingEnd="8dp"
+                android:thumb="@drawable/seekbar_thumb_custom"
+                android:progressDrawable="@drawable/seekbar_custom"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/current_position"
+                style="@style/Widget.Voda.VoiceRecordingDurationText"
+                android:layout_marginTop="3dp"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewmodel.currentPosition}"
+                tools:text="00:00"/>
+
+            <TextView
+                android:id="@+id/remaining_time"
+                style="@style/Widget.Voda.VoiceRecordingDurationText"
+                android:layout_marginTop="3dp"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewmodel.remainingTime}"
+                tools:text="-00:50"/>
+
+            <ImageView
+                android:id="@+id/audio_play_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                android:background="@drawable/ic_play"
+                android:layout_marginTop="24dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"/>
+
+            <ImageView
+                android:id="@+id/previous_button"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_before_five_seconds"
+                app:layout_constraintTop_toTopOf="@+id/audio_play_button"
+                app:layout_constraintEnd_toStartOf="@+id/audio_play_button"
+                app:layout_constraintBottom_toBottomOf="@+id/audio_play_button"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+            <ImageView
+                android:id="@+id/after_button"
+                android:background="@drawable/ic_after_five_seconds"
+                android:layout_marginStart="32dp"
+                app:layout_constraintTop_toTopOf="@+id/audio_play_button"
+                app:layout_constraintStart_toEndOf="@+id/audio_play_button"
+                app:layout_constraintBottom_toBottomOf="@+id/audio_play_button"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+            <TextView
+                android:id="@+id/audio_effect_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Voda.VoiceRecordingEffectTitle"
+                android:text="@string/audio_recording_page_effect_guide"
+                app:layout_constraintBottom_toTopOf="@+id/thick_effect_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/audio_play_button"
+                app:layout_constraintVertical_bias="0.9" />
+
+            <ImageView
+                android:id="@+id/thick_effect_button"
+                android:background="@{viewmodel.effect == EffectMode.Thick ? @drawable/thick_hover : @drawable/thick}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="88dp"
+                android:layout_height="88dp"/>
+
+            <ImageView
+                android:id="@+id/thin_effect_button"
+                android:background="@{viewmodel.effect == EffectMode.Thin ? @drawable/thin_hover : @drawable/thin}"
+                app:layout_constraintStart_toEndOf="@+id/thick_effect_button"
+                app:layout_constraintEnd_toStartOf="@+id/no_effect_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="88dp"
+                android:layout_height="88dp"/>
+
+            <ImageView
+                android:id="@+id/no_effect_button"
+                android:background="@{viewmodel.effect == EffectMode.No_effect ? @drawable/no_effect_hover : @drawable/no_effect}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="88dp"
+                android:layout_height="88dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
+            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Play || viewmodel.isPlayerState() == PlayerState.Playing ? View.GONE : View.VISIBLE}"
             android:background="@drawable/ic_singing_cat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

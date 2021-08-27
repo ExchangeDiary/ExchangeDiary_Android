@@ -6,3 +6,9 @@ enum class PlayerState {
     Play,
     Playing
 }
+
+enum class EffectMode {
+    Thick,
+    Thin,
+    No_effect
+}

@@ -103,4 +103,14 @@
         <item name="android:textColor">@color/voice_recording_description</item>
     </style>
 
+    <style name="Widget.Voda.VoiceRecordingDurationText" parent="Widget.Voda.VolteMediumText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Widget.Voda.VoiceRecordingEffectTitle" parent="Widget.Voda.NotoRegularText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_input_text</item>
+    </style>
+
 </resources>

@@ -18,6 +18,6 @@
 
     <color name="home_bg">@color/gray_text_box</color>
     <color name="voice_recording_description">#b4b4b4</color>
-
+    <color name="seekbar_bg">#ececec</color>
 
 </resources>

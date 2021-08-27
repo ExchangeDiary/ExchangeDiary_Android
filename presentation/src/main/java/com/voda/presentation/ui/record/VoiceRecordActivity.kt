@@ -1,5 +1,6 @@
 package com.voda.presentation.ui.record
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import com.voda.presentation.ui.main.nav.BottomNavFragment
 import com.voda.presentation.ui.record.model.VoiceRecordArg
 
 class VoiceRecordActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_voice_record)
