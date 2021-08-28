@@ -116,7 +116,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/player_container"
-            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Play || viewmodel.isPlayerState() == PlayerState.Playing ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Play || viewmodel.isPlayerState() == PlayerState.Playing || viewmodel.isPlayerState() == PlayerState.Pause ? View.VISIBLE : View.GONE}"
             android:layout_marginEnd="@dimen/voice_recording_page_margin"
             android:layout_marginStart="@dimen/voice_recording_page_margin"
             android:layout_marginTop="24dp"
@@ -231,7 +231,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Play || viewmodel.isPlayerState() == PlayerState.Playing ? View.GONE : View.VISIBLE}"
+            android:visibility="@{viewmodel.isPlayerState() == PlayerState.Play || viewmodel.isPlayerState() == PlayerState.Playing || viewmodel.isPlayerState() == PlayerState.Pause ? View.GONE : View.VISIBLE}"
             android:background="@drawable/ic_singing_cat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

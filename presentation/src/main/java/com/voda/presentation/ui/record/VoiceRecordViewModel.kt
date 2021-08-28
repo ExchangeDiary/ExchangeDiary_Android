@@ -70,8 +70,8 @@ class VoiceRecordViewModel: ViewModel() {
     fun onPlayerButtonClicked() {
         isPlayerState.value?.let {
             when(it) {
-                PlayerState.Play -> playAudio()
-                PlayerState.Playing -> stopPlayer()
+                PlayerState.Play, PlayerState.Pause -> playAudio()
+                PlayerState.Playing -> pausePlayer()
                 else -> {} // nothing
             }
         }
@@ -125,9 +125,9 @@ class VoiceRecordViewModel: ViewModel() {
 //        }
     }
 
-    fun stopPlayer() {
-        setPlayerState(PlayerState.Play)
-        player?.stop()
+    fun pausePlayer() {
+        setPlayerState(PlayerState.Pause)
+        player?.pause()
     }
 
     private fun getPitchValue(): Float {

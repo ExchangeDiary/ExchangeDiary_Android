@@ -4,7 +4,8 @@ enum class PlayerState {
     Record,
     Recording,
     Play,
-    Playing
+    Playing,
+    Pause
 }
 
 enum class EffectMode {

@@ -78,6 +78,7 @@ class VoiceRecordFragment : Fragment() {
                 PlayerState.Play -> setSeekbar()
                 PlayerState.Playing -> updateSeekbar()
                 PlayerState.Recording -> recordingDuration()
+                PlayerState.Pause -> timer?.cancel()
             }
         })
 
