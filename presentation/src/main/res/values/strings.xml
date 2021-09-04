@@ -7,4 +7,9 @@
     <string name="home_page_empty_diary">아직 가입된 다이어리가 없어요.</string>
 
     <string name="hello_blank_fragment"></string>
+
+    <string name="audio_recording_page_finish_button">완료</string>
+    <string name="audio_recording_page_record_description">준비되면 녹음버튼을 눌러주세요\n최대 30초까지 녹음이 가능합니다.</string>
+    <string name="audio_recording_page_effect_guide">원하는 효과를 선택해주세요</string>
+
 </resources>

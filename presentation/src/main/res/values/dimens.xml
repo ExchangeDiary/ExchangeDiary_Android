@@ -20,4 +20,7 @@
     <dimen name="zero">0dp</dimen>
     <dimen name="elevation">8dp</dimen>
 
+    <dimen name="back_key_icon_size">32dp</dimen>
+    <dimen name="voice_recording_page_margin">24dp</dimen>
+
 </resources>
